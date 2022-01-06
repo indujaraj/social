@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{%block body_block%}
+  <div class="container">
+    <div class="row">
+      <div class="card col-md-12 mt-5 p-3 shadow-sm">
+        <h3>@{{thread.user}}-{{thread.receiver}}</h3>
+      </div>
+    </div>
+    {% if message_list.all.count == 0 %}
+    <div class="row my-5">
+      <div class="col-md-12">
+        <p class="empty-text">No Messages</p>
+      </div>
+    </div>
+    {% endif %}
+    {% for message in message_list %}
+    <div class="row">
+
+      <div class="col-md-12 my-1">
+        {% if message.sender_user == request.user.profile %}
+        <div class="sent-message my-3">
+          <p>{{ message.body }}</p>
+
+          {%if message.image%}
+          <p><img src="{{message.image.url}} " alt="" width="200px" height="200px"></p>
+          {%endif%}
+        </div>
+
+        {% elif message.receiver_user == request.user.profile%}
+        <div class="received-message my-3">
+          <p>{{ message.body }}</p>
+
+          {%if message.image%}
+          <p><img src="{{ message.image.url }}" alt="" width="200px" height="200px"></p>
+          {%endif%}
+        </div>
+          {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+    <div class="row justify-content-center mt-5">
+      <div class=>
+        <div class="p-3">
+          <form method="POST" action="{% url 'create-message' thread.pk %}" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="message-box ">
+              {{form.as_p}}
+            <a><button class="btn btn-warning" type="submit">Send Message</button></a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock%}

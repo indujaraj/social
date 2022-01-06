@@ -2,29 +2,32 @@
 {% extends 'base.html' %}
 {%block body_block%}
 <h1>Friend Requests</h1>
- <div class="panel panel-default post">
-              <div class="panel-body">
-                <div class="row" >
-                  <div class="container col-sm-2">
 
-
-                        {% for friend_request in  friend_requests%}
-
-                        <h1>{{friend_request.sender}}</h1>
-
-                        <a href="{% url 'acceptrequest' friend_request.id %}"><button class="btn btn-success">Accept</button></a>
-                        <a href="{% url 'rejectrequest' friend_request.id %}"><button class="btn btn-warning">Reject</button></a>
-
-
-
-
-
-                  </div>
-                                            {%endfor%}
-
+{%if friend_requests%}
+{% for friend_request in  friend_requests%}
+    <div class="container mt-5">
+        <div class="card"></div>
+            <div class="row justify-content-center mt-5">
+                <div class="card col-md-6 ">
+                    <img src="{{ friend_request.sender.image.url }}" id="sendrequest" class="author" width="200" height="200" />
+                    <h2 id="sender"><a href=""></a>{{friend_request.sender}}</h2>
                 </div>
-              </div>
+                <div class="card col-md-6 mt-3">
+                    <a href="{% url 'acceptrequest' friend_request.id %}"><button id="accept" class="btn btn-success btn-lg">Accept</button></a>
+                    <a href="{% url 'rejectrequest' friend_request.id %}"><button id="reject" class="btn btn-warning btn-lg">Reject</button></a>
+                </div>
             </div>
+        </div>
+
+    </div>
+ {%endfor%}
+{%else%}
+<div class="row justify-content-center mt-5">
+    <h1>No requests </h1>
+</div>
+{%endif%}
+
+
 
 
 

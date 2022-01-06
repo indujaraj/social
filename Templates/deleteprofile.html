@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{%block body_block%}
+
+<div class="row">
+   <form action="" method="post" enctype="multipart/form-data">
+
+            {%csrf_token%}
+            {{form.as_p}}
+            <h1>Are you sure you want to delete your profile??</h1>
+            <button  id='delete' class="btn btn-danger" type="submit">delete</button>
+
+   </form>
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{%block body_block%}
+
+ <div class="container">
+            <h1 style="">Update Post</h1>
+                <div class="row mt-5">
+
+                </div>
+                <div class="row justify-content-center mt-5">
+                    <div class="card col-md-8 col-sm-12 shadow-sm px-5 pt-3">
+                        <div class="p-3">
+				            <form action="" method="post" enctype="multipart/form-data">
+                                {%csrf_token%}
+                                {{form.as_p}}
+
+                                <a><button class="btn btn-warning" type="submit">Update</button></a>
+				            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+        </div>
+{%endblock%}

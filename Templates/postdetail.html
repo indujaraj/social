@@ -4,12 +4,13 @@
 
 
      <!-- RECENT POST -->
+            <h1>My Posts</h1>
             <div class="panel panel-default post">
               <div class="panel-body">
-                <div class="row">
+                <div class="row justify-content-center mt-5">
                   <div class="col-sm-2">
-
-                        {% for post in posts %}
+                      {%if my_posts%}
+                        {% for post in my_posts %}
 
 
                   </div>
@@ -18,7 +19,7 @@
                                  {%if post.author.image%}
                                 <p><img src="{{post.author.image.url}}" class="author" height="100px" width="100px" alt=""></p>
                             {%endif%}
-                           <strong> <h3>{{post.author}}</h3></strong>
+                           <strong> <h4>Me</h4></strong>
                             <p>{{post.created}}</p>
                               <p>{{post.content}}</p>
                     </div>
@@ -27,11 +28,17 @@
                             <p><img src="{{post.image.url}}" width="700px" height="500px" alt=""></p>
                         {%endif%}
 
-
+                        <a href="{%url 'update' post.id%}"><button id='update' class="btn btn-warning" >Update</button></a>
+                         <a href="{%url 'delete' post.id%}"><button id='danger' class="btn btn-danger" >Delete</button></a>
                     </div>
                         {%endfor%}
                   </div>
                 </div>
               </div>
             </div>
+            {%else%}
+            <div class="bubble">
+                <h1>No posts to show</h1>
+            {%endif%}
+           </div>
 {%endblock%}

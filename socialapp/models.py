@@ -48,3 +48,6 @@ class Relationship(AbstractClass):
 
     class Meta:
         unique_together = [('sender', 'receiver')]
+
+    def __str__(self):
+        return self.sender.user-self.receiver.user

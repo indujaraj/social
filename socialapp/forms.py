@@ -6,7 +6,7 @@ from .models import Profile
 
 
 class RegisterForm(UserCreationForm):
-    username = forms.CharField(max_length=15, widget=(
+    username = forms.CharField(max_length=30, widget=(
         forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Username'})))
     first_name = forms.CharField(max_length=15, widget=(
         forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Firstname'})))
@@ -35,3 +35,9 @@ class ProfileForm(forms.ModelForm):
         model = Profile
 
         fields = '__all__'
+
+
+class ContactFormEmail(forms.Form):
+    fromemail = forms.EmailField(required=True)
+    subject = forms.CharField(required=True)
+    message = forms.CharField(required=True, widget=forms.Textarea)

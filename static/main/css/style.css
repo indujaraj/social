@@ -1,5 +1,5 @@
 header {
-	background:	rgb(255,103,52);
+	background:rgb(255, 99, 71);
 
 	min-height: 100px;
 	color: #fff;
@@ -21,17 +21,20 @@ header .logo {
 }
 
 .panel-heading {
-	background:rgb(255,220,148)	;
+	background-color:rgb(255,220,148)	;
 	color:rgb(128,34,0)  !important;
 }
 .row{
 background:rgb(255,220,148);
+
 }
+
 .col-md-8{
 margin-left:200px;
 }
 
 .bubble {
+    margin-left:378;
 	position: relative;
 	width: 748px;
 	min-height: 300px;
@@ -39,6 +42,7 @@ margin-left:200px;
 	background: rgb(255,220,148);
 	border-radius: 10px;
 	border: 1px solid black;
+	margin-top:10px;
 }
 
 .bubble:after {
@@ -88,7 +92,7 @@ margin-left:200px;
 }
 
 .comment {
-	border: 1px solid #ccc;
+
 	border-radius: 5px;
 	padding: 3px;
 	margin: 5px 0;
@@ -121,7 +125,7 @@ margin-left:200px;
 }
 
 footer {
-	background:rgb(255,103,52) ;
+	background:rgb(255, 99, 71);
 	height: 90px;
 	color:white ;
 	font-weight : bold;

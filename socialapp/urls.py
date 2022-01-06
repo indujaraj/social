@@ -15,6 +15,9 @@ urlpatterns = [
     path('acceptrequest/<int:id>', views.AcceptRequest.as_view(), name='acceptrequest'),
     path('rejectrequest/<int:id>', views.RejectRequest.as_view(), name='rejectrequest'),
     path('friendslist/<int:id>', views.FriendList.as_view(), name="friendslist"),
+    path('delete/<int:id>', views.DeleteProfile.as_view(), name="deleteprofile"),
+    # path('removefriend/<int:id>', views.RemoveFriend.as_view(), name='remove')
+    path('contact/', views.contactsendmail, name='contactus')
 
 
 ]

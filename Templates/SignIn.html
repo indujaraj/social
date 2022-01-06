@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <!-- CSS only -->
->
+
     <title>Welcome to Social</title>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'main/css/bootstrap.css' %}" rel="stylesheet">
@@ -19,8 +19,8 @@
       margin-left:800px;
       }
       .btn{
-      margin-left:150px;
-      padding-top:10px;
+      margin-left:17px;
+     margin-top:30px;
       }
       h1{
       text-align:center;
@@ -37,8 +37,12 @@
      margin-left:50px;
 
      }
+     a{
+     color:orange;
+     margin-left:148px;
+     }
     </style>
-`     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   </head>
 
@@ -67,8 +71,11 @@
                                 {%csrf_token%}
                                 {{form.as_p}}
 
-                                <a><button class="btn btn-warning" type="submit">Submit</button></a>
+                                <a><button class="btn btn-warning" type="submit">Submit</button></a><br>
+
 				            </form>
+                             <a href="">Forgot Password?</a>
+                            <a href="{% url 'signup' %}">Create new account</a>
                         </div>
 
 

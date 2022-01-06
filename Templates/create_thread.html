@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{%block body_block%}
+<div class="container">
+  <div class="row mt-5">
+
+  </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-5 col-sm-12">
+      <h1>Start a Conversation!</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3 mb-5">
+    <div class="col-md-5 col-sm-12">
+      <form method="POST">
+        {% csrf_token %}
+       <h4><p>Enter the username for the person you would like to talk to.</p></h4>
+        {{ form.as_p}}
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-warning mt-3">Continue</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock%}

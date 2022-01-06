@@ -24,6 +24,22 @@
          h1{
       text-align:center;
       }
+      #request{
+        margin-top:46px;
+        margin-left:-3px;
+      }
+      #request1{
+        margin-top:-4px;
+        margin-left:-154px;
+        margin-bottom:50px;
+      }
+      h2{
+      margin-left:285px;
+      }
+      #list{
+      margin-top:10px;
+      margin-left:285px;
+      }
 
 
     </style>
@@ -42,30 +58,65 @@
       </div>
     </header>
 
-
-
-        <div class="container">
-            <h1 style="">People</h1>
-                <div class="row mt-5">
-
-                </div>
-                <div class="row justify-content-center mt-5">
-                    <div class="card col-md-8 col-sm-12 shadow-sm px-5 pt-3">
-                        <div class="p-3">
-				            <ul class="all_users">
-                                {% for user in users%}
-                                    {% if user not in request.user.profile.friends.all and user != request.user%}
-                                        <h1>{{user}}</h1><button class="btn btn-warning"><a href="{%url 'sendrequest' user.id%}">Send friend request</a></button>
-                                    {%endif%}
-                                {%endfor%}
-                            </ul>
-
-                        </div>
-
-
-                    </div>
-                </div>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="{%url 'timeline' %}">Home</a></li>
+            <li><a href="{%url 'myposts'  %}">MyPosts</a></li>
+            <li><a href="{%url 'friends'  %}">People</a></li>
+            <li ><a href="{% url 'friendslist' user.profile.id %}">MyFriends</a></li>
+              <li ><a href="{% url 'requests' %}">Requests</a></li>
+            <li ><a href="{%url 'profileview' user.profile.pk%}">Profile</a></li>
+
+            <li><a href="{% url 'inbox' %}" class="inbox-icon">Inbox</a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+
+      </div>
+    </nav>
+
+    {% for user in users%}
+    {% if user not in request.user.friends.all and user != request.user%}
+    <div class="container mt-5">
+        <div class="card"></div>
+            <div class="row justify-content-center mt-5">
+                <div class="card col-md-6 ">
+                    <img src="{{user.image.url}}" id="list" class="author" width="100px" height="100px" alt="">
+                    <h2>{{user}}</h2>
+
+                </div>
+                <div class="card col-md-6 mt-3">
+                    <button id="request" class="btn btn-warning"><a href="{%url 'sendrequest' user.id%}">Send friend request</a></button>
+
+                    {% if messages %}
+                        <ul class="messages">
+                                {% for message in messages %}
+                            <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+       {%endif%}
+    {%endfor%}
+
+
+
+
+
+
 
   </body>
 </html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{%block body_block%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 p-5">
+           <h1>Your Conversations</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 p-5">
+          <form method="GET" action="{% url 'create-thread' %}">
+              <button class="btn btn-warning p-3" id="convbt" type="submit"><h2>Start a Conversation</h2></button>
+          </form>
+        </div>
+    </div>
+
+    <div class="row mb-3 p-2">
+       {% for thread in threads.all %}
+        <div class="card col-md-12 p-5 shadow-sm">
+
+          <button type="button" class="btn btn-warning" id="convbtn"><a  href="{% url 'thread' thread.pk %}"><h3>{{thread.user}}-{{ thread.receiver }}</h3></a></button>
+
+        </div>
+           {% endfor %}
+
+    </div>
+</div>
+{% endblock%}
